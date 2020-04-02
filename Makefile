@@ -67,7 +67,7 @@ define link-for-shared-obj
 endef
 
 define lib-obj-targs
-    $(LIB_OBJ_DIR)/$(1).o : $(1).cxx $(call get_list,$(LIB_CFG)/$(1)/deps) ; $$(call compile-for-obj)
+    $(LIB_OBJ_DIR)/$(1).o : $(1).cxx $(call get_list,$(LIB_CFG)/$(1)/ideps) ; $$(call compile-for-obj)
 endef
 
 $(if $(FALSE),$(info CF_OBJ_NAMS: $(CF_OBJ_NAMS)))
@@ -87,7 +87,7 @@ define compile-for-exe
 endef
 
 define app-exe-targs
-    $(1) : $(1).cxx $(call get_list,$(APP_CFG)/$(1)/deps) $(APP_EXE_REQS) ; $$(call compile-for-exe)
+    $(1) : $(1).cxx $(call get_list,$(APP_CFG)/$(1)/ideps) $(APP_EXE_REQS) ; $$(call compile-for-exe)
 endef
 
 $(if $(FALSE),$(info APP_EXE_NAMS: $(APP_EXE_NAMS)))
@@ -118,6 +118,7 @@ define top_hints_def
     @ $(call hints_def , lib-clean         , Remove library $(LIB_TARG) and $(LIB_OBJ_DIR)/*   )
     @ $(call hints_def , apps              , Create executables $(APP_EXE_NAMS)                )
     @ $(call hints_def , apps-clean        , Remove executables                                )
+    @ $(call hints_def , run-test1         , Run test1 in local environment                    )
     @ $(call hints_def , clean             , Remove all generated files and directories        )
 endef
 
@@ -150,6 +151,7 @@ lib             : $(LIB_TARG)     ; $(NULL)
 lib-clean       : $(NULL)         ; rm -rf $(LIB_OBJ_DIR)/* $(LIB_TARG)
 apps            : $(APP_EXE_NAMS) ; $(NULL)
 apps-clean      : $(NULL)         ; rm -rf $(APP_EXE_NAMS)
+run-test1       : $(NULL)         ; bin/run-env ./test1
 clean           : $(CLEANS)       ; rm -rf $(TMP)
 
 .PHONY          : $(PHONYS)
