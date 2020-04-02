@@ -14,7 +14,7 @@
 ### Library
 
 The libCxxMsg library is created by executing "make lib".
-Both static and dynamic libraries are built.
+Only dynamic libraries are built.
 
 ## Validated Environments
 
