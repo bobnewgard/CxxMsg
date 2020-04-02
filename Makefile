@@ -131,6 +131,9 @@ define phonys_def
     sc
     lib
     lib-clean
+    apps
+    apps-clean
+    run-test1
     clean
 endef
 PHONYS += $(strip $(phonys_def))
