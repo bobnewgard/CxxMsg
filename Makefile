@@ -51,8 +51,8 @@ DFLAGS    := $(NULL)
 LIB_NAME     := CxxMsg
 LIB_OBJ_DIR  := $(TMP)/libobj
 LIB_CFG      := $(CFG)/Lib
-CF_OBJ_NAMS  := $(shell ls $(LIB_CFG))
-LIB_REQS     := $(foreach OBJ,$(CF_OBJ_NAMS),$(LIB_OBJ_DIR)/$(OBJ).o)
+LIB_OBJ_NAMS := $(shell ls $(LIB_CFG))
+LIB_REQS     := $(foreach OBJ,$(LIB_OBJ_NAMS),$(LIB_OBJ_DIR)/$(OBJ).o)
 LIB_TARG     := lib$(LIB_NAME).so
 
 $(shell if [ ! -d "$(LIB_OBJ_DIR)" ] ; then (set -x ; mkdir -p $(LIB_OBJ_DIR)) ; fi)
@@ -70,10 +70,10 @@ define lib-obj-targs
     $(LIB_OBJ_DIR)/$(1).o : $(1).cxx $(call get_list,$(LIB_CFG)/$(1)/ideps) ; $$(call compile-for-obj)
 endef
 
-$(if $(FALSE),$(info CF_OBJ_NAMS: $(CF_OBJ_NAMS)))
+$(if $(FALSE),$(info LIB_OBJ_NAMS: $(LIB_OBJ_NAMS)))
 $(if $(FALSE),$(info LIB_REQS: $(LIB_REQS)))
 
-$(foreach NAM,$(CF_OBJ_NAMS),$(eval $(call lib-obj-targs,$(NAM))))
+$(foreach NAM,$(LIB_OBJ_NAMS),$(eval $(call lib-obj-targs,$(NAM))))
 
 
 # -- Apps ----------------------------------------------------------------------
