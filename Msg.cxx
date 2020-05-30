@@ -107,6 +107,18 @@ namespace Messages
     }
 
     void
+    Msg::compose_aok(void)
+    {
+        this->msgstr = "(AOK)" + SP + this->msgstr;
+    }
+
+    void
+    Msg::compose_nok(void)
+    {
+        this->msgstr = "(NOK)" + SP + this->msgstr;
+    }
+
+    void
     Msg::cout_msg(void)
     {
         cout << this->msgstr << endl << flush;
@@ -145,6 +157,22 @@ namespace Messages
     }
 
     void
+    Msg::cout_aok(const char * arg)
+    {
+        this->compose_msg(arg);
+        this->compose_aok();
+        this->cout_msg();
+    }
+
+    void
+    Msg::cout_nok(const char * arg)
+    {
+        this->compose_msg(arg);
+        this->compose_nok();
+        this->cout_msg();
+    }
+
+    void
     Msg::cerr_inf(const char * arg)
     {
         this->compose_msg(arg);
@@ -165,6 +193,22 @@ namespace Messages
     {
         this->compose_msg(arg);
         this->compose_err();
+        this->cerr_msg();
+    }
+
+    void
+    Msg::cerr_aok(const char * arg)
+    {
+        this->compose_msg(arg);
+        this->compose_aok();
+        this->cerr_msg();
+    }
+
+    void
+    Msg::cerr_nok(const char * arg)
+    {
+        this->compose_msg(arg);
+        this->compose_nok();
         this->cerr_msg();
     }
 
@@ -195,6 +239,22 @@ namespace Messages
     }
 
     void
+    Msg::cout_aok(const string & arg)
+    {
+        this->compose_msg(arg);
+        this->compose_aok();
+        this->cout_msg();
+    }
+
+    void
+    Msg::cout_nok(const string & arg)
+    {
+        this->compose_msg(arg);
+        this->compose_nok();
+        this->cout_msg();
+    }
+
+    void
     Msg::cerr_inf(const string & arg)
     {
         this->compose_msg(arg);
@@ -215,6 +275,22 @@ namespace Messages
     {
         this->compose_msg(arg);
         this->compose_err();
+        this->cerr_msg();
+    }
+
+    void
+    Msg::cerr_aok(const string & arg)
+    {
+        this->compose_msg(arg);
+        this->compose_aok();
+        this->cerr_msg();
+    }
+
+    void
+    Msg::cerr_nok(const string & arg)
+    {
+        this->compose_msg(arg);
+        this->compose_nok();
         this->cerr_msg();
     }
 }

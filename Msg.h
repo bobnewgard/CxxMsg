@@ -47,6 +47,8 @@
                 void          compose_inf(void);
                 void          compose_wrn(void);
                 void          compose_err(void);
+                void          compose_aok(void);
+                void          compose_nok(void);
                 virtual void  cout_msg(void);
                 virtual void  cerr_msg(void);
 
@@ -59,16 +61,26 @@
                 void          cout_inf(const char *);
                 void          cout_wrn(const char *);
                 void          cout_err(const char *);
+                void          cout_aok(const char *);
+                void          cout_nok(const char *);
+
                 void          cerr_inf(const char *);
                 void          cerr_wrn(const char *);
                 void          cerr_err(const char *);
+                void          cerr_aok(const char *);
+                void          cerr_nok(const char *);
 
                 void          cout_inf(const std::string &);
                 void          cout_wrn(const std::string &);
                 void          cout_err(const std::string &);
+                void          cout_aok(const std::string &);
+                void          cout_nok(const std::string &);
+
                 void          cerr_inf(const std::string &);
                 void          cerr_wrn(const std::string &);
                 void          cerr_err(const std::string &);
+                void          cerr_aok(const std::string &);
+                void          cerr_nok(const std::string &);
 
                 const char  * get_str_c_msgid(void);
                 std::string & get_str_r_msgid(void);
